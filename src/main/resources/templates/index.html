@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="/images/bootstrap-solid.svg?a=1" width="30" height="30" class="d-inline-block align-top" alt="">
+        OA
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll">
+            <!--            <li class="nav-item active">-->
+            <!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+            <!--            </li>-->
+            <li class="nav-item active dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="systemSetting" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    System Setting
+                </a>
+                <div class="dropdown-menu" aria-labelledby="systemSetting">
+                    <a class="dropdown-item" href="account/list">Account</a>
+                    <a class="dropdown-item" href="role/list">Role</a>
+                    <a class="dropdown-item" href="permission/list">Permission</a>
+                    <a class="dropdown-item" href="menu/list">Menu</a>
+                </div>
+            </li>
+        </ul>
+        <span class="navbar-text"><a href="login">Login</a></span>
+    </div>
+</nav>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+<script type="application/javascript">
+
+</script>
+</body>
+</html>

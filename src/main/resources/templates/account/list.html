@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Account List</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Account</li>
+    </ol>
+</nav>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">UserName</th>
+        <th scope="col">Password</th>
+        <th scope="col">NickName</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,state:${data.list}">
+        <th scope="row" th:text="${state.index}"></th>
+        <td th:text="${row.userName}"></td>
+        <td th:text="${row.password}"></td>
+        <td th:text="${row.nickName}"></td>
+        <td th:text="${#dates.format(row.birthday,'yyyy-MM-dd')}"></td>
+        <td><a onclick="onDelete()" href="#">删除</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+<script type="application/javascript">
+    function onDelete(id){
+        alert(id);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bruce.rbac.mapper.AccountMapper">
+    <select id="page" resultType="Account">
+        select * from account
+    </select>
+
+    <insert id="save">
+        insert into account (userName,password,nickName,birthday) value(#{userName},#{password},#{nickName},#{birthday})
+    </insert>
+
+</mapper>
