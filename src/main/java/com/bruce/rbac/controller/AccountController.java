@@ -1,7 +1,7 @@
 package com.bruce.rbac.controller;
 
+import com.bruce.rbac.core.Result;
 import com.bruce.rbac.entity.Account;
-import com.bruce.rbac.entity.Permission;
 import com.bruce.rbac.service.AccountService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
@@ -33,14 +33,13 @@ public class AccountController {
     }
 
     @PostMapping("create")
-//    public ModelAndView create(@RequestBody() Account account) throws Exception{ #@RequestBody 需要客户端传送一串json字符串
-    public ModelAndView create(Account account) throws Exception{
-        ModelAndView mv = new ModelAndView("redirect:/account/list");
+    @ResponseBody
+//    public Object create(@RequestBody() Account account) throws Exception{ ###@RequestBody 需要客户端传送一串json字符串
+    public Object create(Account account) throws Exception{
         boolean saveResult = accountService.save(account);
         if(!saveResult)
-            throw new Exception("创建用户失败");
+            return new Result("创建用户失败");
 
-        mv.addObject("action","created");
-        return mv;
+        return new Result(account);
     };
 }
