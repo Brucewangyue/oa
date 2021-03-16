@@ -7,4 +7,6 @@ public interface AccountMapper {
     List<Account> page();
 
     int save(Account account);
+
+    Account findWithPermission(String username,String password);
 }

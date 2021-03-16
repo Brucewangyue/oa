@@ -25,4 +25,8 @@ public class AccountService {
         int inserted = accountMapper.save(account);
         return inserted > 0;
     }
+
+    public Account findWithPermission(String username, String password) {
+        return accountMapper.findWithPermission(username, password);
+    }
 }

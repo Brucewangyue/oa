@@ -1,13 +1,11 @@
 package com.bruce.rbac.controller;
 
 import com.bruce.rbac.entity.Account;
+import com.bruce.rbac.entity.Permission;
 import com.bruce.rbac.service.AccountService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -35,6 +33,7 @@ public class AccountController {
     }
 
     @PostMapping("create")
+//    public ModelAndView create(@RequestBody() Account account) throws Exception{ #@RequestBody 需要客户端传送一串json字符串
     public ModelAndView create(Account account) throws Exception{
         ModelAndView mv = new ModelAndView("redirect:/account/list");
         boolean saveResult = accountService.save(account);

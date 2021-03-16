@@ -6,7 +6,7 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<form action="/account/create" method="post">
+<form>
     <div class="form-group">
         <label for="userName">账号：</label>
         <input type="text" class="form-control" id="userName" name="userName" aria-describedby="emailHelp">
@@ -23,9 +23,31 @@
         <label for="birthday">出生年日：</label>
         <input type="text" class="form-control" id="birthday" name="birthday" aria-describedby="emailHelp">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" onclick="formSubmit()" class="btn btn-primary">Submit</button>
 </form>
 
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+<script type="application/javascript">
+    function formSubmit() {
+        const data = {};
+        const t = $('form').serializeArray();
+        $.each(t, function () {
+            data[this.name] = this.value;
+        })
+
+        $.ajax({
+            url: "/account/create",
+            type: "post",
+            data: data,
+            // dataType: "json",
+            // contentType:"application/json",
+            success: function (resp) {
+                console.log(resp);
+                window.location = "/account/list"
+            }
+        })
+    }
+</script>
 </body>
 </html>

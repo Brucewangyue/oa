@@ -2,13 +2,41 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.bruce.rbac.mapper.AccountMapper">
+<mapper namespace="AccountMapper">
     <select id="page" resultType="Account">
-        select * from account
+        select
+         t1.*,
+         from account t1
+    </select>
+
+    <select id="findWithPermission" resultMap="permissionMap">
+        select
+         t1.*,
+         t3.id rid,
+         t3.name rname,
+         t5.id pid,
+         t5.name pname,
+         from account t1
+        left join accountRefRole t2 on t1.id = t2.accountId
+        left join role t3 on t2.roleId = t3.id
+        left join roleRefPermission t4 on t3.id = t4.roleId
+        left join permission t5 on t4.permissionId = t4.id
+        where t1.userName=#{userName} and t1.password = #{password}
     </select>
 
     <insert id="save">
         insert into account (userName,password,nickName,birthday) value(#{userName},#{password},#{nickName},#{birthday})
     </insert>
 
+    <resultMap id="permissionMap" type="Account" autoMapping="true">
+        <id property="id" column="id" />
+        <collection property="roles" ofType="Role">
+            <id property="id" column="rid"/>
+            <result property="name" column="rname"/>
+        </collection>
+        <collection property="permissions" ofType="Permission" autoMapping="true">
+            <id column="pid" property="name"/>
+            <result column="pname" property="name"/>
+        </collection>
+    </resultMap>
 </mapper>

@@ -1,5 +1,6 @@
 package com.bruce.rbac.controller;
 
+import com.bruce.rbac.entity.Account;
 import com.bruce.rbac.service.AccountService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +31,8 @@ public class MainController {
     @PostMapping("login")
     public String login(@RequestParam() String username,@RequestParam() String password){
 
-
+        Account account = accountService.findWithPermission(username, password);
+        System.out.println(account);
 
         return "redirect:/";
     }
